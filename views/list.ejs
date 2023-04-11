@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- <%for(var i=0;i<newlistitems.length;i++){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p><%=newlistitems[i].name %>
+            </div>
+            <%}%> -->
+            <!-- instead of using the traditional for loop we can use for each loop -->
+    <div class="box" id="heading">
+        <h1>
+            <%=todaylist%>
+        </h1>
+    </div>
+    <div class="box">
+        <%newlistitems.forEach(function(item){%>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <!-- onchange="this.form.submit()" will help to submit the form when the items is checked -->
+                    <input type="checkbox" name="check" value="<%=item._id%>" onChange="this.form.submit()">
+                    <p><%=item.name %>
+                </div>
+                <!-- we are including this input tag cause when we are deleting our task form our custom list it will send us to the home page so to stay in the same page we are doing this  -->
+                <input type="hidden" name="listName" value="<%=todaylist%>"></input>
+            </form>
+        <%});%>
+        <form action="/"method="post">
+            <input type="text" name="newitem">
+            <button type="submit" name="button" value="<%=todaylist%>" >+</button>
+        </form>
+    </div>
+</body>
+</html>
