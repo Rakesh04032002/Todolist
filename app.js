@@ -6,7 +6,7 @@ const app=express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static("public"));
-mongoose.connect('mongodb+srv://ry9048095:rakesh406@cluster0.atns2uj.mongodb.net/?retryWrites=true&w=majority/todolistdb');
+mongoose.connect('mongodb://127.0.0.1:27017/blogwebsitedbtodolistdb');
 
 const itemschema={
     name:String
